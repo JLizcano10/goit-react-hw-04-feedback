@@ -6,7 +6,7 @@ import Statistics from 'components/Statistics/Statistics';
 import { useState } from 'react';
 
 const App = () => {
-  const [feedbackState, setfeedbackState] = useState({
+  const [feedbackState, setFeedbackState] = useState({
     good: 0,
     neutral: 0,
     bad: 0,
@@ -14,8 +14,9 @@ const App = () => {
 
   const handleIncrement = e => {
     const property = e.target.name;
-    setfeedbackState(prevfeedbackState => ({
-      [property]: prevfeedbackState[property] + 1,
+    setFeedbackState(prevFeedbackState => ({
+      ...prevFeedbackState,
+      [property]: prevFeedbackState[property] + 1,
     }));
   };
 
@@ -34,7 +35,7 @@ const App = () => {
   };
 
   const options = Object.keys(feedbackState);
-  const totalFeedback = countTotalFeedback;
+  const totalFeedback = countTotalFeedback();
   return (
     <Container>
       <Notification></Notification>
@@ -48,8 +49,8 @@ const App = () => {
             good={feedbackState.good}
             neutral={feedbackState.neutral}
             bad={feedbackState.bad}
-            total={countTotalFeedback}
-            positive={countPositiveFeedbackPercentage}
+            total={countTotalFeedback()}
+            positive={countPositiveFeedbackPercentage()}
           />
         ) : (
           <Notification message="No feedback given" />
