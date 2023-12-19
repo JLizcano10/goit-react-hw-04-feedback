@@ -1,4 +1,5 @@
 import { CountText } from './Statistics.stlyes';
+import PropTypes from 'prop-types';
 
 const Statistics = ({ good, neutral, bad, total, positive }) => {
   return (
@@ -10,6 +11,14 @@ const Statistics = ({ good, neutral, bad, total, positive }) => {
       <CountText>Positive feedback: {positive}%</CountText>
     </div>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positive: PropTypes.number.isRequired,
 };
 
 export default Statistics;

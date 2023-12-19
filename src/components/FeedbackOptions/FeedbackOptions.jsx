@@ -1,4 +1,5 @@
 import { ButtonContainer, ButtonOption } from './FeedbackOptions.styles';
+import PropTypes from 'prop-types';
 
 const FeedbackOptions = ({ options, increment }) => {
   return (
@@ -15,6 +16,11 @@ const FeedbackOptions = ({ options, increment }) => {
       ))}
     </ButtonContainer>
   );
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  increment: PropTypes.func.isRequired,
 };
 
 export default FeedbackOptions;
